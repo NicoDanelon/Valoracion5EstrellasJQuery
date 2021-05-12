@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+        <script src="jquery-3.2.1.min.js"></script>
+    </head>
+    <body class="blanco">
+
+        <input type="image" id="estrella1" class="est" src="assets/img/ev_b.png" alt="">
+        <input type="image" id="estrella2" class="est" src="assets/img/ev_b.png" alt="">
+        <input type="image" id="estrella3" class="est" src="assets/img/ev_b.png" alt="">
+        <input type="image" id="estrella4" class="est" src="assets/img/ev_b.png" alt="">
+        <input type="image" id="estrella5" class="est" src="assets/img/ev_b.png" alt="">
+    
+    </body>
+
+    <script>
+
+        $(document).ready(function(){
+
+            var sumaVotaciones = 0;
+            var cantidadVotos = 0;
+            var promedioEstrellas = 0;
+
+            $('#estrella1').on('click', function(){fnClick(1)});
+            $('#estrella2').on('click', function(){fnClick(2)});
+            $('#estrella3').on('click', function(){fnClick(3)});
+            $('#estrella4').on('click', function(){fnClick(4)});
+            $('#estrella5').on('click', function(){fnClick(5)});
+
+            $('#estrella1').on('mouseover', function(){fnEntro(1)});
+			$('#estrella1').on('mouseout', fnResultado);
+            $('#estrella2').on('mouseover', function(){fnEntro(2)});
+			$('#estrella2').on('mouseout', fnResultado);
+            $('#estrella3').on('mouseover', function(){fnEntro(3)});
+			$('#estrella3').on('mouseout', fnResultado);
+            $('#estrella4').on('mouseover', function(){fnEntro(4)});
+			$('#estrella4').on('mouseout', fnResultado);
+            $('#estrella5').on('mouseover', function(){fnEntro(5)});
+			$('#estrella5').on('mouseout', fnResultado);
+
+
+            function fnEntro(n){
+                $('.est').attr('src','assets/img/ev_b.png');
+                for(i=1; i<=n; i++){
+                    $('#estrella' + i).attr('src','assets/img/ep_b.png');
+                }
+            }
+
+            function fnClick(n){
+                cantidadVotos++;
+                sumaVotaciones+=n;
+                fnResultado();
+            }
+
+            function fnResultado(){
+
+                $('.est').attr('src','assets/img/ev_b.png');
+                if(cantidadVotos>0){
+                    promedioEstrellas = sumaVotaciones / cantidadVotos;
+                }
+                promParteEntera= parseInt(promedioEstrellas);
+                promParteDecimal= promedioEstrellas - promParteEntera;
+
+                for (i=1; i<=promParteEntera; i++){
+                    $('#estrella' + i).attr('src','assets/img/ec_b.png');
+                }
+                if(promParteDecimal>=0.5){
+                    $('#estrella' + i).attr('src','assets/img/em_b.png');
+                }
+
+            }
+        })
+
+    </script>
+
+</html>

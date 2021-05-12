@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+        <script src="jquery-3.2.1.min.js"></script>
+    </head>
+    <body class="blanco">
+
+        <input type="image" id="estrella1" src="assets/img/ev_b.png" alt="">
+        <input type="image" id="estrella2" src="assets/img/ev_b.png" alt="">
+        <input type="image" id="estrella3" src="assets/img/ev_b.png" alt="">
+        <input type="image" id="estrella4" src="assets/img/ev_b.png" alt="">
+        <input type="image" id="estrella5" src="assets/img/ev_b.png" alt="">
+    
+    </body>
+
+    <script>
+
+        $(document).ready(function(){
+
+            $('#estrella1').on('click', fnEstrella1);
+            $('#estrella2').on('click', fnEstrella2);
+            $('#estrella3').on('click', fnEstrella3);
+            $('#estrella4').on('click', fnEstrella4);
+            $('#estrella5').on('click', fnEstrella5);
+
+            $('#estrella1').on('mouseover', fnCambiaOverE1);
+			$('#estrella1').on('mouseout', fnCambiaOutE1);
+            $('#estrella2').on('mouseover', fnCambiaOverE2);
+			$('#estrella2').on('mouseout', fnCambiaOutE2);
+            $('#estrella3').on('mouseover', fnCambiaOverE3);
+			$('#estrella3').on('mouseout', fnCambiaOutE3);
+            $('#estrella4').on('mouseover', fnCambiaOverE4);
+			$('#estrella4').on('mouseout', fnCambiaOutE4);
+            $('#estrella5').on('mouseover', fnCambiaOverE5);
+			$('#estrella5').on('mouseout', fnCambiaOutE5);
+
+
+            var cantidadEstrellas = 0;
+            var sumaVotaciones = 0;
+            var cantidadVotos = 0;
+            var promedioEstrellas = 0;
+
+
+            function fnCambiaOverE1(){
+                $('#estrella1').attr('src','assets/img/ep_b.png');
+            }
+
+            function fnCambiaOutE1(){
+                $('#estrella1').attr('src','assets/img/ev_b.png');
+                fnMostrarPuntuacionActual();
+            }
+
+            function fnCambiaOverE2(){
+                fnCambiaOverE1();
+                $('#estrella2').attr('src','assets/img/ep_b.png');
+            }
+
+            function fnCambiaOutE2(){
+                fnCambiaOutE1();
+                $('#estrella2').attr('src','assets/img/ev_b.png');
+                fnMostrarPuntuacionActual();
+            }
+            function fnCambiaOverE3(){
+                fnCambiaOverE2();
+                $('#estrella3').attr('src','assets/img/ep_b.png');
+            }
+
+            function fnCambiaOutE3(){
+                fnCambiaOutE2();
+                $('#estrella3').attr('src','assets/img/ev_b.png');
+                fnMostrarPuntuacionActual();
+            }
+            function fnCambiaOverE4(){
+                fnCambiaOverE3();
+                $('#estrella4').attr('src','assets/img/ep_b.png');
+            }
+
+            function fnCambiaOutE4(){
+                fnCambiaOutE3();
+                $('#estrella4').attr('src','assets/img/ev_b.png');
+                fnMostrarPuntuacionActual();
+            }
+
+            function fnCambiaOverE5(){
+                fnCambiaOverE4();
+                $('#estrella5').attr('src','assets/img/ep_b.png');
+                
+            }
+
+            function fnCambiaOutE5(){
+                fnCambiaOutE4();
+                $('#estrella5').attr('src','assets/img/ev_b.png');
+                fnMostrarPuntuacionActual();
+            }
+
+            function fnEstrella1(){
+                cantidadEstrellas = 2;
+                sumaVotaciones+=cantidadEstrellas;
+                cantidadVotos+=1;
+                fnMostrarPuntuacionActual();
+            }
+
+            function fnEstrella2(){
+                cantidadEstrellas = 4;
+                sumaVotaciones+=cantidadEstrellas;
+                cantidadVotos+=1;
+                fnMostrarPuntuacionActual();
+            }
+
+            function fnEstrella3(){
+                cantidadEstrellas = 6;
+                sumaVotaciones+=cantidadEstrellas;
+                cantidadVotos+=1;
+                fnMostrarPuntuacionActual();
+            }
+
+            function fnEstrella4(){
+                cantidadEstrellas = 8;
+                sumaVotaciones+=cantidadEstrellas;
+                cantidadVotos+=1;
+                fnMostrarPuntuacionActual();
+            }
+
+            function fnEstrella5(){
+                cantidadEstrellas = 10;
+                sumaVotaciones+=cantidadEstrellas;
+                cantidadVotos+=1;
+                fnMostrarPuntuacionActual();
+            }
+
+            function fnMostrarPuntuacionActual(){
+                promedioEstrellas = sumaVotaciones / cantidadVotos;
+                console.log(promedioEstrellas);
+                for(i=0; i<5; i++){
+
+                }
+                if(promedioEstrellas<=2){
+                    $('#estrella1').attr('src','assets/img/ec_b.png');
+                    $('#estrella2').attr('src','assets/img/ev_b.png');
+                    $('#estrella3').attr('src','assets/img/ev_b.png');
+                    $('#estrella4').attr('src','assets/img/ev_b.png');
+                    $('#estrella5').attr('src','assets/img/ev_b.png');
+                }else{
+                    if(promedioEstrellas<=3){
+                        $('#estrella1').attr('src','assets/img/ec_b.png');
+                        $('#estrella2').attr('src','assets/img/em_b.png');
+                        $('#estrella3').attr('src','assets/img/ev_b.png');
+                        $('#estrella4').attr('src','assets/img/ev_b.png');
+                        $('#estrella5').attr('src','assets/img/ev_b.png');
+                    }else{
+                        if(promedioEstrellas<=4){
+                            $('#estrella1').attr('src','assets/img/ec_b.png');
+                            $('#estrella2').attr('src','assets/img/ec_b.png');
+                            $('#estrella3').attr('src','assets/img/ev_b.png');
+                            $('#estrella4').attr('src','assets/img/ev_b.png');
+                            $('#estrella5').attr('src','assets/img/ev_b.png');
+                        }else{
+                            if(promedioEstrellas<=5){
+                                $('#estrella1').attr('src','assets/img/ec_b.png');
+                                $('#estrella2').attr('src','assets/img/ec_b.png');
+                                $('#estrella3').attr('src','assets/img/em_b.png');
+                                $('#estrella4').attr('src','assets/img/ev_b.png');
+                                $('#estrella5').attr('src','assets/img/ev_b.png');
+                            }else{
+                                if(promedioEstrellas<=6){
+                                    $('#estrella1').attr('src','assets/img/ec_b.png');
+                                    $('#estrella2').attr('src','assets/img/ec_b.png');
+                                    $('#estrella3').attr('src','assets/img/ec_b.png');
+                                    $('#estrella4').attr('src','assets/img/ev_b.png');
+                                    $('#estrella5').attr('src','assets/img/ev_b.png');
+                                }else{
+                                    if(promedioEstrellas<=7){
+                                        $('#estrella1').attr('src','assets/img/ec_b.png');
+                                        $('#estrella2').attr('src','assets/img/ec_b.png');
+                                        $('#estrella3').attr('src','assets/img/ec_b.png');
+                                        $('#estrella4').attr('src','assets/img/em_b.png');
+                                        $('#estrella5').attr('src','assets/img/ev_b.png');
+                                    }else{
+                                        if(promedioEstrellas<=8){
+                                            $('#estrella1').attr('src','assets/img/ec_b.png');
+                                            $('#estrella2').attr('src','assets/img/ec_b.png');
+                                            $('#estrella3').attr('src','assets/img/ec_b.png');
+                                            $('#estrella4').attr('src','assets/img/ec_b.png');
+                                            $('#estrella5').attr('src','assets/img/ev_b.png');
+                                        }else{
+                                            if(promedioEstrellas<=9){
+                                                $('#estrella1').attr('src','assets/img/ec_b.png');
+                                                $('#estrella2').attr('src','assets/img/ec_b.png');
+                                                $('#estrella3').attr('src','assets/img/ec_b.png');
+                                                $('#estrella4').attr('src','assets/img/ec_b.png');
+                                                $('#estrella5').attr('src','assets/img/em_b.png');
+                                            }else{
+                                                if(promedioEstrellas<=10){
+                                                    $('#estrella1').attr('src','assets/img/ec_b.png');
+                                                    $('#estrella2').attr('src','assets/img/ec_b.png');
+                                                    $('#estrella3').attr('src','assets/img/ec_b.png');
+                                                    $('#estrella4').attr('src','assets/img/ec_b.png');
+                                                    $('#estrella5').attr('src','assets/img/ec_b.png');
+                                                }else{}
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+        })
+
+    </script>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+        <script src="jquery-3.2.1.min.js"></script>
+    </head>
+    <body class="blanco">
+
+        <input type="image" id="1" class="est" src="assets/img/ev_b.png" alt="">
+        <input type="image" id="2" class="est" src="assets/img/ev_b.png" alt="">
+        <input type="image" id="3" class="est" src="assets/img/ev_b.png" alt="">
+        <input type="image" id="4" class="est" src="assets/img/ev_b.png" alt="">
+        <input type="image" id="5" class="est" src="assets/img/ev_b.png" alt="">
+    
+    </body>
+
+    <script>
+
+        $(document).ready(function(){
+
+            var sumaVotaciones = 0;
+            var cantidadVotos = 0;
+            var promedioEstrellas = 0;
+
+            $('.est').on('click', function(){fnClick(this.id)});
+            $('.est').on('mouseover', function(){fnEntro(this.id)});
+            $('#estrella1').on('mouseout', fnResultado);
+
+            function fnEntro(n){
+                $('.est').attr('src','assets/img/ev_b.png');
+                for(i=1; i<=n; i++){
+                    $('#' + i).attr('src','assets/img/ep_b.png');
+                }
+            }
+
+            function fnClick(n){
+                n= parseInt(n);
+                cantidadVotos++;
+                sumaVotaciones+=n;
+                fnResultado();
+            }
+
+            function fnResultado(){
+
+                $('.est').attr('src','assets/img/ev_b.png');
+                if(cantidadVotos>0){
+                    promedioEstrellas = sumaVotaciones / cantidadVotos;
+                }
+                promParteEntera= parseInt(promedioEstrellas);
+                promParteDecimal= promedioEstrellas - promParteEntera;
+
+                for (i=1; i<=promParteEntera; i++){
+                    $('#' + i).attr('src','assets/img/ec_b.png');
+                }
+                if(promParteDecimal>=0.5){
+                    $('#' + i).attr('src','assets/img/em_b.png');
+                }
+
+            }
+        })
+
+    </script>
+
+</html>
